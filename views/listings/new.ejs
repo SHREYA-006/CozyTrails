@@ -1,0 +1,81 @@
+<%layout("/layouts/boilerPlate")-%>
+<div class="row mt-3">
+<div class="col-8 offset-2">
+    <br>
+    <h3>Create a New Listing</h3>
+    <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="listing[title]" placeholder="Enter title" class="form-control" required>
+            <div class="invalid-feedback">Title required</div>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" class="form-control" required></textarea>
+            <div class="invalid-feedback">Please Enter A Description</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <div class="dropdown">
+                <input type="hidden" name="listing[category]" id="categoryInput" required>
+                <button class="btn btn-outline-dark dropdown-toggle w-25 text-start d-flex justify-content-between align-items-center" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                --Select Category--
+                </button>
+                <ul class="dropdown-menu w-25" aria-labelledby="categoryDropdown">
+                    <li><a class="dropdown-item" href="#" data-value="Trending">Trending</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Rooms">Rooms</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Amazing_cities">Amazing Cities</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Arctic">Arctic</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Castle">Castle</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Camping">Camping</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Domes">Domes</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Top_of_the_world">Top of the World</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Beaches">Beaches</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Amazing_pools">Amazing Pools</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Breakfast">Breakfast</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Upload Image</label>      
+            <input name="listing[image]"placeholder="Upload Image" class="form-control" type="file">
+        </div> 
+        <div class="row">
+            <div class="mb-3 col-md-4">
+                <label for="price" class="form-label">Price</label> 
+                <input  type="number" name="listing[price]" class="form-control" required>
+                <div class="invalid-feedback">Please Enter Correct Price</div>
+            </div>
+            <div class="mb-3 col-md-8">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" name="listing[country]" class="form-control" required>
+                <div class="invalid-feedback">Please Enter A Country</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input name="listing[location]" class="form-control" required>
+            <div class="invalid-feedback">Please Enter A Location</div>
+        </div>
+        <button class="btn btn-dark mt-3">Add</button>
+        <br/><br/>
+    </form>
+</div> 
+</div>
+<script>
+  const categoryInput = document.getElementById('categoryInput');
+  const categoryDropdown = document.getElementById('categoryDropdown');
+  const categoryItems = document.querySelectorAll('.dropdown-item');
+
+  categoryItems.forEach(item => {
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
+      const value = this.getAttribute('data-value');
+      categoryInput.value = value;
+      categoryDropdown.textContent = value;
+    });
+  });
+</script>

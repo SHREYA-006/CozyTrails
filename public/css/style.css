@@ -1,0 +1,255 @@
+body{
+    background-color : #fbfefb !important;
+    font-family: "plus jakarta sans",sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-y: auto !important;
+}
+.container{
+    flex: 1;
+}
+.navbar{
+    height: 4.5rem;
+    background-color: #EADDC7;
+}
+@media (max-width: 880px) {
+  .navbar-brand img {
+    height: 3rem !important;
+  }
+}
+.navbar-collapse.bg-open {
+  background-color: #EADDC7 !important; /* Light gray background (you can change it) */
+  border-radius: 0.5rem !important;
+}
+
+@media (max-width: 880px) {
+  #navbarNavAltMarkup {
+    text-align: right;
+  }
+
+  #navbarNavAltMarkup .navbar-nav {
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+  }
+
+  /* ✅ Keep form elements in one line */
+  #navbarNavAltMarkup form.d-flex {
+              
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.2rem;
+    width: 100%;
+  }
+
+  #navbarNavAltMarkup .form-control,
+  #navbarNavAltMarkup .btn-search {
+    width: auto;                 /* 👈 Don't take full width */
+    max-width: 100%;
+  }
+
+  #navbarNavAltMarkup .nav-link {
+    padding-right: 1rem;
+  }
+}
+
+.nav-link{
+    color: #222222 !important;
+}
+.f-info-links a{
+    text-decoration: none;
+    color: #462B11;
+}
+.f-info-links,.f-info-socials,.f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.listing-link{
+    text-decoration: none;
+}
+
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+.f-info-links a:hover {
+    text-decoration:underline;
+}
+.f-info{
+    text-align: center;
+    display: flex;
+    height: 8rem;
+    background-color: #EADDC7;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card{
+    background-color: #f7efd5 ;
+    border: none !important;
+    margin-bottom: 2rem;
+    padding: 0.5rem !important; 
+}
+
+.review-card{
+    border: 1px solid black !important ;
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.card-body{
+    padding: 0.5 !important;
+}
+.card-text p{
+    font-weight: 400 !important;
+}
+.card:hover{
+    box-shadow: 0 0.3rem 0.7rem #B6A590;
+}
+/*show page*/
+.show-image{
+    height: 40vh;
+}
+.btns{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+.delete-btn{
+    margin-left: 2rem;
+}
+.show-card{
+    padding-left: 0;
+    padding-right: 0;
+}
+.custom-alert {
+  background-color: #f5eee1 !important;
+  /* color: #000 !important; */
+  border: 1px solid #EADDC7 !important;
+}
+
+#map { 
+    height: 400px; 
+    width: 80vh;
+    margin-bottom: 2rem;
+}
+
+#filters{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#filters a{
+    text-decoration: none;
+    color: #2a1807 !important;
+}
+
+.filter{
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    opacity: 0.7;
+}
+.filter:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.active-filter {
+    background-color: #dfe4ea;
+    border-bottom: 3px solid #000;
+}
+
+.filter p{
+    font-size: 0.8rem;
+}
+
+.tax-info{
+    display: none;
+}
+
+.tax-toggle{
+    border: 2px solid #462B11 !important;
+    border-radius: 1rem;
+    height: 2.5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+.form-check-label{
+    font-size: 0.9rem;
+    color: #462B11;
+}
+
+.btn-search{
+    background-color:  #462B11!important;
+    color: #ffffff !important;
+    border-radius: 50% !important;
+}
+
+.btn-search i {
+    display: inline !important;
+    height: 2rem !important;
+}
+
+.search-input{
+    border-radius: 2rem !important;
+    width: 20rem !important;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem !important;
+    border: 0.5px solid #462B11 !important;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-in{
+    background-color: #EADDC7 !important;
+}
+
+/* Target all links inside modal */
+#filtersModal a {
+  text-decoration: none;      /* removes underline */
+  color: inherit;             /* inherits parent color */
+}
+
+/* Style the filter cards in modal */
+#filtersModal .filter {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+#filtersModal .filter:hover {
+  background-color: #e2e6ea;
+  transform: scale(1.02);
+}
+
+/* Icon styling inside modal */
+#filtersModal .filter i {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+.custom-modal {
+  max-width: 60vh ;        /* Limit width */
+  margin: 2rem auto;       /* Center it with spacing */
+  max-height: 70vh;        /* Total modal height limited to 90% of viewport */
+}
+
+.custom-modal .modal-content {
+  max-height: 70vh;        /* Ensure the modal content doesn’t exceed the modal height */
+  overflow-y: auto;        /* Enable scroll inside content if needed */
+  border-radius: 0.5rem;   /* Optional: smooth rounded corners */
+}
+
+

@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+    <a class="navbar-brand" href="/listings"><img src="/logo.png" alt="Cozy Trails Logo" class="d-inline-block align-text-top" style="height:4rem;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon" style="font-size: 0.8rem;"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings"><b>Explore</b></a>
+      </div>
+
+      <div class="navbar-nav ms-auto navbar-in">
+          <div class="container-fluid">
+            <form class="d-flex" action="/listings" method="GET" role="search">
+              <% if (typeof selectedCategory !== 'undefined' && selectedCategory) { %>
+                <input type="hidden" name="category" value="<%= selectedCategory %>">
+              <% } %>
+              <input class="form-control 
+                            me-2 search-input" 
+                            name="search" 
+                            type="search" 
+                            placeholder="Search Destinations" 
+                            aria-label="Search"
+                            value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"/>
+              <button class="btn btn-search " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+          </div>
+      </div>
+
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/listings/new"><b>Trail to Host</b></a>
+        <% if (!currentUser){%>
+          <a class="nav-link" aria-current="page" href="/signup"><b>Signup</b></a>
+          <a class="nav-link" href="/login"><b>Login</b></a>
+        <%}%>
+        <% if (currentUser){%>
+          <a class="nav-link" href="/logout"><b>Logout</b></a>
+        <%}%>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const collapseEl = document.getElementById('navbarNavAltMarkup');
+
+    collapseEl.addEventListener('show.bs.collapse', function () {
+      collapseEl.classList.add('bg-open');
+    });
+
+    collapseEl.addEventListener('hide.bs.collapse', function () {
+      collapseEl.classList.remove('bg-open');
+    });
+  });
+</script>
+
