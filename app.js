@@ -81,12 +81,16 @@ app.use((req,res,next)=>{
     next();
 })
 
+app.get("/",(req,res)=>{
+    res.redirect("/listings")
+})
 // LISTINGS ROUTES
 app.use("/listings",listingsRouter);
 // REVIEWS ROUTES
 app.use("/listings/:id/reviews",reviewsRouter);
 //User Router
 app.use("/",userRouter);
+
 
 app.all("*",(req,res,next)=>{
     next(new ExpressError(404,"page not found"));
