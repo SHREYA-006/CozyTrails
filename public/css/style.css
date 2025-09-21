@@ -19,29 +19,34 @@ body{
   }
 }
 .navbar-collapse.bg-open {
-  background-color: #EADDC7 !important; /* Light gray background (you can change it) */
+  background-color: #EADDC7 !important; 
   border-radius: 0.5rem !important;
 }
 
 @media (max-width: 880px) {
   #navbarNavAltMarkup {
-    text-align: right;
+    text-align: left;
   }
 
   #navbarNavAltMarkup .navbar-nav {
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
     width: 100%;
   }
 
   /* ✅ Keep form elements in one line */
   #navbarNavAltMarkup form.d-flex {
               
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
     gap: 0.2rem;
     width: 100%;
+  }
+
+  #navbarNavAltMarkup .container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   #navbarNavAltMarkup .form-control,
@@ -51,7 +56,19 @@ body{
   }
 
   #navbarNavAltMarkup .nav-link {
-    padding-right: 1rem;
+    padding-left: 0.2rem;
+    padding-right: 0;
+  }
+}
+@media (max-width: 768px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa; /* match your navbar bg */
+    padding: 1rem;
+    z-index: 1000;
   }
 }
 
@@ -251,5 +268,37 @@ body{
   overflow-y: auto;        /* Enable scroll inside content if needed */
   border-radius: 0.5rem;   /* Optional: smooth rounded corners */
 }
+
+/* map styling */
+/* Default (desktop) - keep 400px height */
+.map-container {
+  height: 400px;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* On small screens - force square (width = height) */
+@media (max-width: 768px) {
+  .map-container {
+    aspect-ratio: 1 / 1; /* Makes it a perfect square */
+    height: auto;        /* Let width control the size */
+  }
+}
+
+@media (max-width: 768px) {
+  .mb-3 img {
+    max-width: 96% !important;   /* shrink image size */
+    height: auto !important;     /* keep aspect ratio */
+    
+  }
+}
+
+@media (max-width: 768px) {
+  #categoryDropdown,
+  .dropdown-menu[aria-labelledby="categoryDropdown"] {
+    width: 100% !important;   /* Full width only on mobile */
+  }
+}
+
 
 

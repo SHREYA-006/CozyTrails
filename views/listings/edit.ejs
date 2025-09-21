@@ -22,7 +22,7 @@
         
         <div class="mb-3">
             <label for="category" class="form-label">Category</label>
-            <div class="dropdown">
+            <div class="dropdown ">
                 <input type="hidden" name="listing[category]" id="categoryInput" value="<%= list.category %>" required>
                 <button class="btn btn-outline-dark dropdown-toggle w-25 text-start d-flex justify-content-between align-items-center" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <%= list.category || '--Select Category--' %>
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 ">
             <div ><img src="<%=originalImageUrl%>" ></div>
             <label for="image" class="form-label">Image</label>
             <input type="file" name="listing[image][url]" class="form-control">

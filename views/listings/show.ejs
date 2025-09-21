@@ -1,10 +1,10 @@
 <%layout("/layouts/boilerPlate")-%>
 <div class="row mt-3">
-    <div class="col-8 offset-3">
+    <div class="col-12 col-md-8 offset-md-2 text-center">
         <h3><%=list.title%></h3>
     </div>
 
-    <div class="card col-6 offset-3 show-card">
+    <div class="card col-12 col-md-6 offset-md-3 show-card">
         <img src="<%=list.image.url%>" class="card-img-top show-image" alt="Listing-image">
         <div class="card-body">
             <p class="card-text"><i> <b>Hosted By : <%=list.owner.username%></b></i></p>
@@ -19,21 +19,21 @@
         </div>
     </div>
     <% if (currentUser && currentUser._id.equals(list.owner._id)){%>
-        <div class="btns mb-3">
-            <form method="GET" action="/listings/<%=list._id%>/edit">
+        <div class="col-12 col-md-6 offset-md-3 mb-3 ">
+            <form method="GET" action="/listings/<%=list._id%>/edit" class="d-inline">
                 <button class="btn btn-dark ">Edit</button>
             </form>
-            <form method="POST" action="/listings/<%=list._id%>?_method=DELETE">
+            <form method="POST" action="/listings/<%=list._id%>?_method=DELETE" class="d-inline">
                 <button class="btn btn-dark delete-btn">Delete</button>
             </form>
         </div>  
     <%}%>
     
     
-    <div class="col-6 offset-3">
+    <div class="col-12 col-md-6 offset-md-3">
         <% if (currentUser){%>
         <hr>
-        <h4>leave a review</h4>
+        <h4>Leave a review</h4>
         <form method="POST" action="/listings/<%=list._id%>/reviews" novalidate class="needs-validation">
             <div class="mb-3 mt-3">
                 <label for="rating" class="form-label">Rating</label>
@@ -66,35 +66,40 @@
         <%}else{%>
             <h5><i>No Reviews Yet</i></h5>
         <%}%>
-        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-        <% for (review of list.reviews){ %>
-            <div class="card review-card col-5 ms-3 mb-3 ">
-                <div class="card-body">
-                    <h5 class="card-title">@<%=review.author.username%></h5>
+        
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-3">
+            <% for (review of list.reviews){ %>
+                <div class="col">
+                <div class="card review-card h-100">
+                    <div class="card-body">
+                    <h5 class="card-title text-truncate" style="max-width: 100%;">
+                        @<%=review.author.username%>
+                    </h5>
                     <p class="starability-result card-text" data-rating="<%=review.rating%>"></p>
                     <p class="card-text"><%=review.comment%></p>
-                </div>
-                <% if (currentUser && currentUser._id.equals(review.author._id)){%>
-                <form method="POST" action="/listings/<%=list._id%>/reviews/<%=review._id%>?_method=DELETE">
+                    </div>
+                    <% if (currentUser && currentUser._id.equals(review.author._id)){%>
+                    <form method="POST" action="/listings/<%=list._id%>/reviews/<%=review._id%>?_method=DELETE">
                     <button class="btn btn-sm btn-dark">Delete</button>
-                </form>
-                <%}%>
-            </div>
-        <% } %>
-
+                    </form>
+                    <%}%>
+                </div>
+                </div>
+            <% } %>
         </div>
     </div>
 
-    <div class="col-6 offset-3">
-    <h3>Where You'll be</h3>
-    <div
-        id="map" 
-        style="height: 400px;"
-        data-lat="<%= list.geometry.coordinates[1] %>" 
-        data-lng="<%= list.geometry.coordinates[0] %>" 
-        data-location="<%= list.location %>">
+    <div class="col-12 col-md-6 offset-md-3">
+        <br>
+        <h3>Where You'll Be</h3>
+        <div
+            id="map"
+            class="map-container"
+            data-lat="<%= list.geometry.coordinates[1] %>"
+            data-lng="<%= list.geometry.coordinates[0] %>"
+            data-location="<%= list.location %>">
+        </div>
     </div>
-</div>
 </div>
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 <script src="/js/map.js"></script>

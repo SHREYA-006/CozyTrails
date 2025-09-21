@@ -5,9 +5,6 @@ module.exports.renderSignupForm=(req,res)=>{
     return res.render("users/signup.ejs")
 }
 
-
-//module.exports.signup=async(req,res,next)=>{
-
 module.exports.signup = async (req, res, next) => {
   try {
     let { username, email, password } = req.body;
@@ -35,42 +32,6 @@ module.exports.signup = async (req, res, next) => {
     return res.redirect("/signup");
   }
 };
-//     try{
-//         let{username,email,password}=req.body
-//         const newUser=new User({username,email})
-//         const registerUser=await User.register(newUser,password)
-
-//         console.log(registerUser);
-
-//         await new Promise((resolve, reject) => {
-//             req.login(registerUser, (err) => {
-//                 if (err) return reject(err);
-//                 resolve();
-//             });
-//         });
-
-//         req.flash("success", "Registered Successfully!!");
-//         return res.redirect("/listings");
-
-//         } catch (e) {
-//             req.flash("failure", e.message);
-//             return res.redirect("/signup");
-//         }
-//     };
-
-        
-//         req.login(registerUser,(err)=>{
-//             if(err){
-//                 return next(err)
-//             }
-//         req.flash("success","Registered Successfully!!")
-//         return res.redirect("/listings")
-//         })
-//     }catch(e){
-//         req.flash("failure",e.message)
-//         return res.redirect("/signup")
-//     }
-// }
 
 module.exports.renderLoginForm=(req,res)=>{
     return res.render("users/login.ejs")
