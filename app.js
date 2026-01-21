@@ -1,3 +1,4 @@
+
 if(process.env.NODE_ENV!="production"){
     require('dotenv').config();
 }
@@ -50,15 +51,18 @@ const store=MongoStore.create({
 store.on("error",()=>{
     console.log("error in mongo session store",err);
 })
+
+app.set("trust proxy",1);
 const sessionOptions={
     store,
     secret: process.env.SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{
-        expires:Date.now()*7*24*60*60*1000,
+        expires:Date.now()+7*24*60*60*1000,
         maxAge:7*24*60*60*1000,
         httpOnly:true,
+        secure: process.env.NODE_ENV === "production",
     }
 }
 
