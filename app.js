@@ -5,6 +5,12 @@ if(process.env.NODE_ENV!="production"){
 
 const express=require("express");
 const app=express();
+
+app.locals.localUser = null; //updated
+app.locals.success = [];
+app.locals.error = [];
+app.locals.failure = [];
+
 const mongoose=require("mongoose")
 const path=require("path");
 app.set("view engine","ejs");
@@ -53,6 +59,7 @@ store.on("error",()=>{
 })
 
 app.set("trust proxy",1);
+
 const sessionOptions={
     store,
     secret: process.env.SECRET,
